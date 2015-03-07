@@ -27,7 +27,7 @@ for p in range(PAGES):
  for i in cNodes:
   id=i.getAttribute("id")
   location=i.getAttribute("location")
-
+  data=i.getAttribute("date")
   game=i.getElementsByTagName("item")[0].getAttribute("name")
   cNodes2 = i.getElementsByTagName("players")
   if (cNodes2):
@@ -40,7 +40,7 @@ for p in range(PAGES):
     new= j.getAttribute("new")
     rating= j.getAttribute("rating")
     win= j.getAttribute("win")
-    baza.WstawDoBazySQLiteJednaPartie(sys.argv[1],game,id,name,username,new,startposition,color,score,win,rating,location)
+    baza.WstawDoBazySQLiteJednaPartie(sys.argv[1],game,id,name,username,new,startposition,color,score,win,rating,location,data)
 
 
 
