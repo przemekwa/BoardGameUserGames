@@ -19,5 +19,5 @@ def WstawDoBazySQLitePartie(NAZWA_PLIKU_BAZY,element):
 def WstawDoBazySQLiteJednaPartie(NAZWA_PLIKU_BAZY,NAZWA,IDPARTI,PLAYER,USER,NEW,POSITION,TEAM,SCORE,WIN,RATING,LOCATION,DATA):
  con= sql.connect(NAZWA_PLIKU_BAZY+'.db')
  cur=con.cursor()
- cur.execute('insert into PARTIA (NAZWA,IDPARTI,PLAYER,USER,NEW,POSITION,TEAM,SCORE,WIN,RATING,LOCATION) values ("'+NAZWA+'","'+IDPARTI+'","'+PLAYER+'","'+USER+'","'+NEW+'","'+POSITION+'","'+TEAM+'","'+SCORE+'","'+WIN+'","'+RATING+'","'+LOCATION+'","'+DATA+'"   )')
+ cur.execute('insert into PARTIA (NAZWA,IDPARTI,PLAYER,USER,NEW,POSITION,TEAM,SCORE,WIN,RATING,LOCATION,DATA) values ("'+NAZWA+'","'+IDPARTI+'","'+PLAYER+'","'+USER+'","'+NEW+'","'+POSITION+'","'+TEAM+'","'+SCORE+'","'+WIN+'","'+RATING+'","'+LOCATION+'","'+DATA+'"   )')
  con.commit()
