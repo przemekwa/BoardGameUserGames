@@ -1,6 +1,5 @@
 import sqlite3 as sql
 
-
 def StworzBazeSQLite(NAZWA_PLIKU_BAZY):
  con= sql.connect(NAZWA_PLIKU_BAZY+'.db')
  cur=con.cursor()
