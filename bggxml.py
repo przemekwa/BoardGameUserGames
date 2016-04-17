@@ -6,31 +6,18 @@ from xml.dom import minidom
 import logging 
 
 
-
 logging.basicConfig(fileName="log.log", level=logging.DEBUG)
-
-
-
-NAZWA_PLIKU_XML=sys.argv[1]+'.xml'
 baza.StworzBazeSQLite(sys.argv[1])
-
 logging.debug("Rozpoczecie sciaganie statystyk dla " + sys.argv[1])
-
 strona=urllib.urlopen('http://boardgamegeek.com/xmlapi2/plays?username='+sys.argv[1]).read()
-plik=open(NAZWA_PLIKU_XML,'w')
-plik.write(strona)
-plik.close()
-DOMTree = minidom.parse(NAZWA_PLIKU_XML)
+DOMTree = minidom.parseString(strona)
 TOTAL = DOMTree.getElementsByTagName("plays")[0].getAttribute("total")
 PAGES= int(TOTAL) % 100
 logging.debug("Ilosc stron do pobrania " + str(PAGES))
 for p in range(PAGES):
  logging.debug("Sciaganie strony nr " + str(p))
  strona=urllib.urlopen('http://boardgamegeek.com/xmlapi2/plays?username='+sys.argv[1]+'&page='+str(p+1)).read()
- plik=open(NAZWA_PLIKU_XML,'w')
- plik.write(strona)
- plik.close()
- DOMTree = minidom.parse(NAZWA_PLIKU_XML)
+ DOMTree = minidom.parseString(strona)
  cNodes = DOMTree.getElementsByTagName("play")
  for i in cNodes:
   id=i.getAttribute("id")
