@@ -5,7 +5,6 @@ import sys
 from xml.dom import minidom
 import logging 
 
-
 logging.basicConfig(fileName="log.log", level=logging.DEBUG)
 baza.StworzBazeSQLite(sys.argv[1])
 logging.debug("Rozpoczecie sciaganie statystyk dla " + sys.argv[1])
